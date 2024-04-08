@@ -45,21 +45,20 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="description">
                     ${place.description}
                   </div>
-                </article>`
+                </article>`;
       }));
     }
   });
 
-  let requestData = JSON.stringify({ amenity_list: amenity_list });
-  /* On button click add list of Amenities checked*/
-  $('button').click(function(){
+  const requestData = JSON.stringify({ amenity_list });
+  /* On button click add list of Amenities checked */
+  $('button').click(function () {
     $.ajax({
-        type: 'POST',
-        url: 'http://localhost:5001/api/v1/places_search',
-        data: requestData,
-        dataType: 'json',
-        contentType: 'application/json',
-      });
-  })
-
+      type: 'POST',
+      url: 'http://localhost:5001/api/v1/places_search',
+      data: requestData,
+      dataType: 'json',
+      contentType: 'application/json'
+    });
+  });
 });

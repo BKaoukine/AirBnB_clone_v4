@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="description">
                     ${place.description}
                   </div>
-                </article>`
+                </article>`;
       }));
     }
   });

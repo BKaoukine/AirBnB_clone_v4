@@ -13,33 +13,32 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    const states_list = [];
-    $('input:checkbox').change(
-      function () {
-        if ($(this).is(':checked')) {
-          states_list[$(this).attr('data-id')] = $(this).attr('data-name');
-        } else {
-          delete states_list[$(this).attr('data-id')];
-        }
-  
-        states_list.forEach(function (item) {
-          $('.locations h4').append(item);
-        });
-      });
-      const cities_list = [];
-      $('input:checkbox').change(
-        function () {
-          if ($(this).is(':checked')) {
-            cities_list[$(this).attr('data-id')] = $(this).attr('data-name');
-          } else {
-            delete cities_list[$(this).attr('data-id')];
-          }
-    
-          cities_list.forEach(function (item) {
-            $('.locations h4').append(item);
-          });
-        });
+  const states_list = [];
+  $('input:checkbox').change(
+    function () {
+      if ($(this).is(':checked')) {
+        states_list[$(this).attr('data-id')] = $(this).attr('data-name');
+      } else {
+        delete states_list[$(this).attr('data-id')];
+      }
 
+      states_list.forEach(function (item) {
+        $('.locations h4').append(item);
+      });
+    });
+  const cities_list = [];
+  $('input:checkbox').change(
+    function () {
+      if ($(this).is(':checked')) {
+        cities_list[$(this).attr('data-id')] = $(this).attr('data-name');
+      } else {
+        delete cities_list[$(this).attr('data-id')];
+      }
+
+      cities_list.forEach(function (item) {
+        $('.locations h4').append(item);
+      });
+    });
 
   $.ajax({
     type: 'GET',
@@ -73,21 +72,20 @@ document.addEventListener('DOMContentLoaded', function () {
                   <div class="description">
                     ${place.description}
                   </div>
-                </article>`
+                </article>`;
       }));
     }
   });
 
-  let requestData = JSON.stringify({ amenity_list: amenity_list, states_list: states_list, cities_list: cities_list });
-  /* On button click add list of Amenities checked*/
-  $('button').click(function(){
+  const requestData = JSON.stringify({ amenity_list, states_list, cities_list });
+  /* On button click add list of Amenities checked */
+  $('button').click(function () {
     $.ajax({
-        type: 'POST',
-        url: 'http://localhost:5001/api/v1/places_search',
-        data: requestData,
-        dataType: 'json',
-        contentType: 'application/json',
-      });
-  })
-
+      type: 'POST',
+      url: 'http://localhost:5001/api/v1/places_search',
+      data: requestData,
+      dataType: 'json',
+      contentType: 'application/json'
+    });
+  });
 });
